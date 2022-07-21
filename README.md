@@ -1,1 +1,1 @@
-# Pseduo FullStack APP 
+# Pseudo FullStack APP 
