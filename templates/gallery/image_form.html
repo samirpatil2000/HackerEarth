@@ -1,0 +1,16 @@
+{% extends 'gallery/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}New Image{% endblock %}
+
+{% block content %}
+
+      <h1 class="display-4 text-center">New Image</h1>
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %} {{form|crispy}}
+        <button class="btn btn-outline btn-block" type="submit">
+          New Image
+        </button>
+      </form>
+
+{% endblock %}

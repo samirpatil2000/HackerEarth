@@ -40,6 +40,9 @@ INSTALLED_APPS = [
 
     # local apps
     'gallery',
+
+    # third party
+    "crispy_forms",
 ]
 
 MIDDLEWARE = [
