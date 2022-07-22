@@ -12,13 +12,20 @@ class ImageListView(ListView):
 
     model = Image
     context_object_name = 'images'
-    paginate_by = 1
+    paginate_by = 9
     template_name = 'gallery/image_list.html'
+
+    def get_queryset(self):
+        search = self.request.GET.get('search', '')
+        object_list = self.model.objects.all()
+        if search:
+            object_list = object_list.filter(name__icontains=search)
+        return object_list
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         images = self.get_queryset()
-        page = self.request.GET.get('page')
+        page = self.request.GET.get('page', 1)
         paginator = Paginator(images, self.paginate_by)
         try:
             images = paginator.page(page)
@@ -28,9 +35,6 @@ class ImageListView(ListView):
             images = paginator.page(paginator.num_pages)
         context['images'] = images
         return context
-
-
-# def image_list(request):
 
 
 class ImageDetailView(DetailView):
@@ -58,6 +62,11 @@ class ImageUpdateView(UpdateView):
 
     def get_success_url(self):
         return reverse_lazy(URLS.IMAGE_DETAILS, kwargs={'pk': self.object.id})
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["update"] = True
+        return context
 
 def delete_image(request, pk):
     try:

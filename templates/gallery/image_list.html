@@ -4,7 +4,6 @@
 {% block style %}
 {% endblock %}
 {% block content %}
-    <h1>{{ page_obj.paginator.num_pages }}</h1>
     <div class="album py-5 bg-light">
         <div class="row">
         {% for image in  images %}
@@ -20,7 +19,7 @@
             </div>
         {% endfor %}
         </div>
-  </div>
+    </div>
     <nav aria-label="Page navigation example">
       <ul class="pagination">
           {% if page_obj.has_previous %}
@@ -32,9 +31,17 @@
             </li>
           {% endif %}
 
-      {% if page_obj.paginator.num_pages < 5 %}
+      {% if page_obj.paginator.num_pages %}
         {% for page in page_obj.paginator.page_range %}
-            <li class="page-item"><a class="page-link" href="?page={{ page }}">{{ page }}</a></li>
+{#            {% if page > 3 %}#}
+{#                {{ break }}#}
+{#            {% endif  %}#}
+            {% if page_obj.number == page %}
+                <li class="page-item active"><a class="page-link" href="?page={{ page }}">{{ page }}</a></li>
+            {% else  %}
+                <li class="page-item"><a class="page-link" href="?page={{ page }}">{{ page }}</a></li>
+            {% endif  %}
+
         {% endfor %}
       {% else %}
         {% for page in page_obj.paginator.page_range %}

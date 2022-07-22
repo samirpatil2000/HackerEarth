@@ -4,12 +4,21 @@
 {% block title %}New Image{% endblock %}
 
 {% block content %}
-
-      <h1 class="display-4 text-center">New Image</h1>
+      <h1 class="display-4 text-center">
+          {% if update %}
+                Update Image
+            {% else %}
+                New Image
+            {% endif %}
+      </h1>
       <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %} {{form|crispy}}
-        <button class="btn btn-outline btn-block" type="submit">
-          New Image
+        {% csrf_token %} {{form | crispy}}
+        <button class="btn btn-outline-info btn-block" type="submit">
+            {% if update %}
+                Update Image
+            {% else %}
+                New Image
+            {% endif %}
         </button>
       </form>
 
