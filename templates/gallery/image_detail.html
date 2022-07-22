@@ -5,19 +5,18 @@
 {{ object.name }}
 {% endblock title %}
 {% block content %}
-<div class="row mt-2 mb-4">
-  <div class="col-lg-4 col-md-6 col-12">
-    <img
-      src="{{ object.url }}"
-      alt="{{object.name}}" class="img-fluid mx-auto d-block"
-    />
-  </div>
-  <div class="col-lg-8 col-md-6 col-12">
-    <h2 class="mt-md-0 mt-2">{{object.name}}</h2>
-    <p>{{object.detail}}</p>
-      <p>Created Date -: {{ object.created_at|date:"D, d M, Y" }}</p>
+    <div class="container">
+        <h2 style="margin-top: 2rem;" >{{object.name}}</h2>
+        <img
+          src="{{ object.url }}"
+          alt="{{object.name}}" class="img-fluid mx-auto d-block"
+          style="margin-bottom: 2rem; margin-top: 2rem;"
+        />
+
+        <p>{{object.detail}}</p>
+        <p>Created Date -: {{ object.created_at|date:"D, d M, Y" }}</p>
       <a href="{{ object.get_update_url }}" class="btn btn-outline-info">Update</a>
       <a href="{{ object.get_delete_url }}" class="btn btn-outline-danger">Delete</a>
-  </div>
-</div>
+    </div>
+
 {% endblock %}

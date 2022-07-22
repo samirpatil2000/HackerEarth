@@ -24,10 +24,11 @@
     <div class="album py-4 bg-light" style="padding-left: 1rem; padding-right: 1.5rem;">
         <div class="row" style="padding-bottom: 2rem">
         {% for image in  images %}
-            <div class="col-sm-4"><div class="card" style="width: 22rem; margin-bottom: 2rem">
+            <div class="col-sm-4">
+                <div class="card" href="{{ image.get_absolute_url }}" style="width: 22rem; margin-bottom: 2rem">
                   <img class="card-img-top" src="{{ image.url }}" style="height: 20rem;" alt="Card image cap">
                   <div class="card-body">
-                    <h5 class="card-title">{{ image.name }}</h5>
+                      <a class="card-title h5" href="{{ image.get_absolute_url }}">{{image.name}}</a>
                     <p class="card-text">{{ image.detail | truncatewords:20 }}</p>
                     <a href="{{ image.get_absolute_url }}" class="btn btn-outline-info">View</a>
                   </div>
