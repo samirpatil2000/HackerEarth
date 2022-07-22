@@ -6,9 +6,13 @@ from utils.constant import URLS
 
 
 class Image(models.Model):
+
     name = models.CharField(max_length=50, default="The Image")
     url = models.CharField(max_length=200)
     detail = models.TextField(default="The image details")
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.name
