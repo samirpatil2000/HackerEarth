@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-
+from utils.constant import URLS
 from gallery.forms import ImageCreationForm
 from gallery.models import Image
 
@@ -45,23 +45,23 @@ class ImageCreateView(CreateView):
 
     model = Image
     fields = ["name", "url", "detail"]
-    success_url = reverse_lazy('images')
+    success_url = reverse_lazy(URLS.IMAGE_LIST)
 
 
 class ImageUpdateView(UpdateView):
 
     model = Image
     fields = ["name", "url", "detail"]
-    success_url = reverse_lazy('images')
+    success_url = reverse_lazy(URLS.IMAGE_LIST)
 
     def get_success_url(self):
-        return reverse_lazy('image-detail', kwargs={'pk': self.object.id})
+        return reverse_lazy(URLS.IMAGE_DETAILS, kwargs={'pk': self.object.id})
 
 
 class ImageDeleteView(DeleteView):
 
     model = Image
-    success_url = reverse_lazy('images')
+    success_url = reverse_lazy(URLS.IMAGE_LIST)
 
 
 
