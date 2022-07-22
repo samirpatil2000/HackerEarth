@@ -1,5 +1,5 @@
 from django.urls import path
-from gallery.views import ImageListView, ImageDetailView, ImageCreateView, ImageUpdateView, ImageDeleteView
+from gallery.views import ImageListView, ImageDetailView, ImageCreateView, ImageUpdateView, delete_image
 from utils.constant import URLS
 
 urlpatterns = [
@@ -8,6 +8,6 @@ urlpatterns = [
     path("images/<int:pk>", ImageDetailView.as_view(), name=URLS.IMAGE_DETAILS),
     path("images/new", ImageCreateView.as_view(), name=URLS.NEW_IMAGE),
     path("images/<int:pk>/update", ImageUpdateView.as_view(), name=URLS.UPDATE_IMAGE),
-    path("images/<int:pk>/delete", ImageDeleteView.as_view(), name=URLS.DELETE_IMAGE),
+    path("images/<int:pk>/delete", delete_image, name=URLS.DELETE_IMAGE),
 
 ]

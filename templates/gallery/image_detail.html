@@ -1,6 +1,22 @@
 {% extends 'gallery/base.html' %}
 {% load static %}
 
+{% block title %}
+{{ object.name }}
+{% endblock title %}
 {% block content %}
-    {{ object.name }}
+<div class="row mt-2 mb-4">
+  <div class="col-lg-4 col-md-6 col-12">
+    <img
+      src="{{ object.url }}"
+      alt="{{object.name}}" class="img-fluid mx-auto d-block"
+    />
+  </div>
+  <div class="col-lg-8 col-md-6 col-12">
+    <h2 class="mt-md-0 mt-2">{{object.name}}</h2>
+    <p>{{object.detail}}</p>
+      <a href="{{ object.get_update_url }}" class="btn btn-outline-info">Update</a>
+      <a href="{{ object.get_delete_url }}" class="btn btn-outline-danger">Delete</a>
+  </div>
+</div>
 {% endblock %}

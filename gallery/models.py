@@ -19,4 +19,4 @@ class Image(models.Model):
         return reverse(URLS.UPDATE_IMAGE, kwargs={'pk': self.id})
 
     def get_delete_url(self):
-        return reverse(URLS.DELETE_IMAGE, kwargs={'pk': self})
+        return reverse(URLS.DELETE_IMAGE, kwargs={'pk': self.id})

@@ -1,7 +1,7 @@
 {% load static %}
 <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
 <div class="container">
-<a href="#" class="navbar-brand">Gallery</a>
+<a href="{% url 'images' %}" class="navbar-brand">Gallery</a>
 <button
   class="navbar-toggler"
   type="button"
@@ -12,8 +12,8 @@
 <div class="collapse navbar-collapse" id="navigation">
   <ul class="navbar-nav">
     <li class="nav-item">
-      <a href="#" class="nav-link">
-          FETCH
+      <a href="{% url 'image-new' %}" class="nav-link">
+          ADD IMAGE
       </a>
     </li>
       <li class="nav-item">

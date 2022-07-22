@@ -1,5 +1,6 @@
-from django.shortcuts import render
-from django.urls import reverse_lazy
+from django.core.exceptions import ObjectDoesNotExist
+from django.shortcuts import render, redirect
+from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from utils.constant import URLS
 from gallery.forms import ImageCreationForm
@@ -57,11 +58,13 @@ class ImageUpdateView(UpdateView):
     def get_success_url(self):
         return reverse_lazy(URLS.IMAGE_DETAILS, kwargs={'pk': self.object.id})
 
-
-class ImageDeleteView(DeleteView):
-
-    model = Image
-    success_url = reverse_lazy(URLS.IMAGE_LIST)
+def delete_image(request, pk):
+    try:
+        image_object = Image.objects.get(pk=pk)
+        image_object.delete()
+    except ObjectDoesNotExist:
+        pass
+    return redirect(URLS.IMAGE_LIST)
 
 
 
