@@ -4,14 +4,30 @@
 {% block style %}
 {% endblock %}
 {% block content %}
+
+
+    <section class="py-5 text-center container">
+        <div class="row py-lg-5">
+          <div class="col-lg-6 col-md-8 mx-auto">
+            <h1 class="fw-light">The Gallery</h1>
+            <p class="lead text-muted"></p>
+                <form class="form-inline center" method="GET">
+                  <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search" value="{{ request.GET.search }}">
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Search Image">Search</button>
+                </form>
+          </div>
+        </div>
+   </section>
+
+
     <div class="album py-5 bg-light">
-        <div class="row">
+        <div class="row" style="padding-bottom: 3rem">
         {% for image in  images %}
-            <div class="col-sm-4"><div class="card" style="width: 22rem;">
+            <div class="col-sm-4"><div class="card" style="width: 22rem; margin-bottom: 2rem">
                   <img class="card-img-top" src="{{ image.url }}" style="height: 20rem;" alt="Card image cap">
                   <div class="card-body">
                     <h5 class="card-title">{{ image.name }}</h5>
-                    <p class="card-text">{{ image.detail | truncatewords:40 }}</p>
+                    <p class="card-text">{{ image.detail | truncatewords:20 }}</p>
                     <a href="{{ image.get_absolute_url }}" class="btn btn-outline-info">View</a>
                   </div>
                 </div>
