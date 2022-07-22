@@ -12,7 +12,7 @@ class ImageListView(ListView):
 
     model = Image
     context_object_name = 'images'
-    paginate_by = 9
+    paginate_by = 3
     template_name = 'gallery/image_list.html'
 
     def get_queryset(self):

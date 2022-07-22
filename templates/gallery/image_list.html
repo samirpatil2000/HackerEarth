@@ -1,4 +1,4 @@
-{% extends 'gallery/base.html' %}
+{% extends 'base.html' %}
 {% load static %}
 
 {% block style %}
@@ -6,23 +6,23 @@
 {% block content %}
 
 
-    <section class="py-5 text-center container">
+    <section class="py-5 text-center container" style="margin-top: -2rem; margin-bottom: -2rem;">
         <div class="row py-lg-5">
           <div class="col-lg-6 col-md-8 mx-auto">
             <h1 class="fw-light">The Gallery</h1>
-            <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
+            <p class="lead text-muted">The mind blowing images from the far deep space, Taken from telescope which can look into the past.</p>
 
                 <form class="form-inline center" method="GET">
                   <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search" value="{{ request.GET.search }}">
-                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Search Image">Search</button>
+                  <button class="btn btn-outline-success my-2 my-sm-0" style="align-content: center" type="submit" value="Search Image">Search</button>
                 </form>
           </div>
         </div>
    </section>
 
 
-    <div class="album py-5 bg-light">
-        <div class="row" style="padding-bottom: 3rem">
+    <div class="album py-4 bg-light" style="padding-left: 1rem; padding-right: 1.5rem;">
+        <div class="row" style="padding-bottom: 2rem">
         {% for image in  images %}
             <div class="col-sm-4"><div class="card" style="width: 22rem; margin-bottom: 2rem">
                   <img class="card-img-top" src="{{ image.url }}" style="height: 20rem;" alt="Card image cap">
