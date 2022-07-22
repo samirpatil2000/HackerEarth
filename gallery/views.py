@@ -1,4 +1,5 @@
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
@@ -10,27 +11,27 @@ from gallery.models import Image
 class ImageListView(ListView):
 
     model = Image
+    context_object_name = 'images'
+    paginate_by = 1
+    template_name = 'gallery/image_list.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        images = self.get_queryset()
+        page = self.request.GET.get('page')
+        paginator = Paginator(images, self.paginate_by)
+        try:
+            images = paginator.page(page)
+        except PageNotAnInteger:
+            images = paginator.page(1)
+        except EmptyPage:
+            images = paginator.page(paginator.num_pages)
+        context['images'] = images
         return context
 
-    # context_object_name = 'books'
-    # paginate_by = 5
-    #
-    # def get_context_data(self, **kwargs):
-    #     context = super(BookListView, self).get_context_data(**kwargs)
-    #     books = self.get_queryset()
-    #     page = self.request.GET.get('page')
-    #     paginator = Paginator(books, self.paginate_by)
-    #     try:
-    #         books = paginator.page(page)
-    #     except PageNotAnInteger:
-    #         books = paginator.page(1)
-    #     except EmptyPage:
-    #         books = paginator.page(paginator.num_pages)
-    #     context['books'] = books
-    #     return context
+
+# def image_list(request):
+
 
 class ImageDetailView(DetailView):
 

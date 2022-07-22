@@ -4,6 +4,7 @@ from django.db import models
 from django.urls import reverse
 from utils.constant import URLS
 
+
 class Image(models.Model):
     name = models.CharField(max_length=20, default="The Image")
     url = models.CharField(max_length=200)
