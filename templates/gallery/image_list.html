@@ -26,14 +26,15 @@
         <div class="row" style="padding-bottom: 2rem">
         {% for image in  images %}
             <div class="col-sm-4">
+                <a href="{{ image.get_absolute_url }}">
                 <div class="card" href="{{ image.get_absolute_url }}" style="width: 22rem; margin-bottom: 2rem">
                   <img class="card-img-top" src="{{ image.url }}" style="height: 20rem;" alt="Card image cap">
                   <div class="card-body" href="{{image.get_absolute_url }}">
                       <a class="card-title h5" href="{{ image.get_absolute_url }}">{{image.name}}</a>
                     <p class="card-text">{{ image.detail | truncatewords:20 }}</p>
-                    <a href="{{ image.get_absolute_url }}" class="btn btn-outline-info">View</a>
                   </div>
                 </div>
+                </a>
             </div>
         {% endfor %}
         </div>
