@@ -7,7 +7,7 @@ from utils.constant import URLS
 
 class Image(models.Model):
 
-    name = models.CharField(max_length=50, default="The Image")
+    name = models.CharField(max_length=100, default="The Image")
     url = models.CharField(max_length=200)
     detail = models.TextField(default="The image details")
 
