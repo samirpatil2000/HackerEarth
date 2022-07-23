@@ -20,7 +20,7 @@
 
 ## High and Low Level Diagram
 #### [Miro Link](https://miro.com/app/board/uXjVOkePgBI=/)
-## Low Level Diagram![Low Level Diagram](https://user-images.githubusercontent.com/55244065/180570587-b0517683-de81-4e32-b275-1f2bf078e96b.png)
+## Low Level Diagram![Low Level Diagram](https://user-images.githubusercontent.com/55244065/180600477-b91e81e2-157d-45ff-8b22-34883f65e83d.png)
 
 
 ## Installation
