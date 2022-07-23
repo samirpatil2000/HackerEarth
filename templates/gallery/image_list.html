@@ -1,18 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}
-    The Astro Gallery
-{% endblock %}
+{% block title %} The Astro Gallery {% endblock %}
 {% block content %}
-
-
     <section class="py-5 text-center container" style="margin-top: -2rem; margin-bottom: -2rem;">
         <div class="row py-lg-5">
           <div class="col-lg-6 col-md-8 mx-auto">
             <h1 class="fw-light">The Astro Gallery</h1>
             <p class="lead text-muted">The mind-blowing images from the far deep space, The intergalactic images, Taken from telescope which can look into the past. Most of them are from James Webb Telescope and Hubble </p>
-
                 <form class="form-inline center" method="GET">
                   <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search" value="{{ request.GET.search }}">
                   <button class="btn btn-outline-success my-2 my-sm-0" style="align-content: center" type="submit" value="Search Image">Search</button>
@@ -20,7 +15,6 @@
           </div>
         </div>
    </section>
-
 
     <div class="album py-4 bg-light" style="padding-left: 1rem; padding-right: 1.5rem;">
         <div class="row" style="padding-bottom: 2rem">
@@ -52,9 +46,6 @@
 
       {% if page_obj.paginator.num_pages %}
         {% for page in page_obj.paginator.page_range %}
-{#            {% if page > 3 %}#}
-{#                {{ break }}#}
-{#            {% endif  %}#}
             {% if page_obj.number == page %}
                 <li class="page-item active"><a class="page-link" href="?page={{ page }}">{{ page }}</a></li>
             {% else  %}
